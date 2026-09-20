@@ -4,10 +4,6 @@ import {
   FaFolder,
   FaCode,
   FaUsers,
-  FaGithub,
-  FaLinkedinIn,
-  FaFacebookF,
-  FaEnvelope,
   FaMapMarkerAlt,
   FaLaptopCode,
   FaMugHot,
@@ -30,13 +26,6 @@ const STATS = [
   { icon: FaFolder, target: 12, suffix: '+', label: 'Projects Done' },
   { icon: FaCode, target: 4, suffix: '+', label: 'Years Coding' },
   { icon: FaUsers, target: 100, suffix: '%', label: 'Dedication' },
-]
-
-const SOCIALS = [
-  { icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-  { icon: FaLinkedinIn, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: FaFacebookF, href: 'https://facebook.com', label: 'Facebook' },
-  { icon: FaEnvelope, href: 'mailto:baesmichael5@gmail.com', label: 'Email' },
 ]
 
 const META = [
@@ -106,16 +95,6 @@ function Hero() {
             ))}
           </div>
 
-          <div className="hero__social hero__anim" style={{ animationDelay: '420ms' }}>
-            <span>Follow Me</span>
-            <div className="hero__social-icons">
-              {SOCIALS.map(({ icon: Icon, href, label }) => (
-                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}>
-                  <Icon />
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className="hero__visual hero__anim" style={{ animationDelay: '150ms' }}>
