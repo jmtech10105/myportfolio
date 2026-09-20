@@ -1,0 +1,298 @@
+:root {
+  --bg: #f8f5ef;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #f4f0e7;
+  --border: #e8e2d4;
+  --text: #171a1f;
+  --text-dim: #6b7078;
+  --accent: #c8963f;
+  --accent-alt: #16241d;
+  --accent-2: #2f7d5c;
+  --radius: 16px;
+  --shadow-soft: 0 1px 2px rgba(20, 20, 15, 0.04), 0 12px 28px -18px rgba(20, 20, 15, 0.16);
+  --shadow-lift: 0 20px 40px -18px rgba(20, 20, 15, 0.22);
+  --navbar-scrolled-bg: rgba(248, 245, 239, 0.85);
+  --hero-overlay-1: rgba(248, 245, 239, 0.96);
+  --hero-overlay-2: rgba(248, 245, 239, 0.82);
+  --hero-overlay-3: rgba(248, 245, 239, 0.4);
+  --hero-vignette: rgba(10, 15, 10, 0.28);
+  --font-display: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0a0d16;
+  --bg-alt: #10141f;
+  --surface: #131829;
+  --surface-hover: #191f34;
+  --border: #262c42;
+  --text: #eef0fb;
+  --text-dim: #969db9;
+  --accent: #d9a94f;
+  --accent-alt: #3a9c74;
+  --accent-2: #4de3c1;
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 28px -18px rgba(0, 0, 0, 0.5);
+  --shadow-lift: 0 20px 40px -18px rgba(0, 0, 0, 0.6);
+  --navbar-scrolled-bg: rgba(10, 13, 22, 0.85);
+  --hero-overlay-1: rgba(10, 13, 22, 0.94);
+  --hero-overlay-2: rgba(10, 13, 22, 0.78);
+  --hero-overlay-3: rgba(10, 13, 22, 0.35);
+  --hero-vignette: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section {
+  width: 100%;
+  padding: 7rem clamp(1.25rem, 5vw, 4rem);
+  position: relative;
+  scroll-margin-top: 80px;
+}
+
+.section__heading {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin-bottom: 0.75rem;
+}
+
+.section__eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section__heading h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  margin: 0;
+  font-weight: 700;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: var(--accent-alt);
+  color: #fff;
+  box-shadow: 0 14px 28px -12px rgba(22, 36, 29, 0.45);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 18px 32px -10px rgba(22, 36, 29, 0.5);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn--glow {
+  padding: 2px;
+  border-color: transparent;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.btn--glow:hover {
+  border-color: transparent;
+  color: var(--text);
+}
+
+.btn--glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150vmax;
+  height: 150vmax;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--accent-2) 12deg,
+    var(--accent) 24deg,
+    transparent 42deg,
+    transparent 360deg
+  );
+  animation: border-spin 4s linear infinite;
+}
+
+@keyframes border-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.btn--glow-inner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.btn--glow:hover .btn--glow-inner {
+  color: var(--accent);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.65, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .btn--glow::before {
+    animation: none;
+  }
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-alt), var(--accent-2));
+  z-index: 300;
+  transform-origin: left;
+  transition: width 0.1s linear;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  z-index: 200;
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 5rem 1.25rem;
+  }
+}
